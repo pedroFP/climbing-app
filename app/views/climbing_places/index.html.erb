@@ -6,10 +6,7 @@
 
 <div id="climbing_places">
   <% @climbing_places.each do |climbing_place| %>
-    <%= render climbing_place %>
-    <p>
-      <%= link_to "Show this climbing place", climbing_place, class: "btn btn-sm btn-light" %>
-    </p>
+    <%= render 'climbing_places/climbing_place_preview', climbing_place: climbing_place %>
   <% end %>
 </div>
 

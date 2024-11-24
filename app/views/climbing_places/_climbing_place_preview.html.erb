@@ -12,13 +12,14 @@
       <i class="bi text-danger bi-geo-alt-fill"></i> <%= climbing_place.address %>
     </p>
     <p class="card-text" >
-      <%= climbing_place.description %>
+      <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
     </p>
 
-    <div class="d-flex justify-content-between">
-      <%= button_to climbing_place, method: :delete, class: "btn btn-danger btn-sm me-2", data: { turbo_confirm: "Are you sure?" } do %>
-        Destroy
-        <i class="bi bi-trash"></i>
+    <div class="d-flex justify-content-end">
+      <%= link_to climbing_place, class: "btn btn-sm btn-light" do %>
+        Show this climbing place
+        &nbsp;
+        <i class="bi bi-eye"></i>
       <% end %>
 
       <% if climbing_place.link.present? %>

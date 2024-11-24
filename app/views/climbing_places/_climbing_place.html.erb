@@ -21,11 +21,10 @@
         <i class="bi bi-trash"></i>
       <% end %>
 
-      <% if climbing_place.link.present? %>
-        <%= link_to climbing_place.link, class: "btn btn-outline-dark btn-sm", target: "_blank" do %>
-          <span> Go to website </span>
-          <i class="bi bi-arrow-up-right-square-fill"></i>
-        <% end %>
+      <%= link_to climbing_places_path, class: "btn btn-outline-secondary btn-sm" do %>
+        Back to climbing places
+        &nbsp;
+        <i class="bi bi-arrow-return-left"></i>
       <% end %>
     </div>
   </div>

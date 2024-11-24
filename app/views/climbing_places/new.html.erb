@@ -1,0 +1,11 @@
+<% content_for :title, "New climbing place" %>
+
+<h1>New climbing place</h1>
+
+<%= render "form", climbing_place: @climbing_place %>
+
+<br>
+
+<div>
+  <%= link_to "Back to climbing places", climbing_places_path %>
+</div>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Climbing places" %>
+
+<h1>Climbing places</h1>
+
+<div id="climbing_places">
+  <% @climbing_places.each do |climbing_place| %>
+    <%= render climbing_place %>
+    <p>
+      <%= link_to "Show this climbing place", climbing_place, class: "btn btn-sm btn-light" %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New climbing place", new_climbing_place_path %>

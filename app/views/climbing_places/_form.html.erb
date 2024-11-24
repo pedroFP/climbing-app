@@ -1,0 +1,47 @@
+<%= form_with(model: climbing_place, class: "needs-validation", novalidate: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control #{'is-invalid' if climbing_place.errors[:name].any?}", required: true %>
+    <% if climbing_place.errors[:name].any? %>
+      <div class="invalid-feedback">
+        <%= climbing_place.errors[:name].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3" data-controller="autocomplete">
+    <%= form.label :address, class: "form-label", for: "autocomplete-input" %>
+    <%= form.text_field :address, class: "form-control #{'is-invalid' if climbing_place.errors[:address].any?}", required: true, id: "autocomplete-input", placeholder: "Enter an address" %>
+    <% if climbing_place.errors[:address].any? %>
+      <div class="invalid-feedback">
+        <%= climbing_place.errors[:address].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :link, class: "form-label" %>
+    <%= form.text_field :link, class: "form-control #{'is-invalid' if climbing_place.errors[:link].any?}", placeholder: "Enter a link" %>
+    <% if climbing_place.errors[:link].any? %>
+      <div class="invalid-feedback">
+        <%= climbing_place.errors[:link].first %>
+        <%= climbing_place.errors[:link].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.rich_text_area :description, class: "form-control #{'is-invalid' if climbing_place.errors[:description].any?}", placeholder: "Write a description about the place" %>
+    <% if climbing_place.errors[:description].any? %>
+      <div class="invalid-feedback">
+        <%= climbing_place.errors[:description].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-grid">
+    <%= form.submit "Save Climbing Place", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

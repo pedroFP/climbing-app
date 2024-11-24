@@ -6,5 +6,5 @@ Geocoder.configure(
   units: :km, # :km for kilometers, :mi for miles
   use_https: true, # Use HTTPS for requests
   cache: Rails.cache, # Optional: cache responses to improve performance
-  cache_prefix: 'geocoder:'
+  cache_prefix: "geocoder:"
 )

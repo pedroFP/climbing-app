@@ -16,6 +16,14 @@
         data-map-longitude-value="<%= @climbing_place.longitude %>">
       </div>
     </div>
+
+    <div class="d-flex justify-content-start">
+      <% @climbing_place.images.each do |image| %>
+        <div class="attachment m-2">
+          <%= image_tag image, class: "img-thumbnail", alt: "Image" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -20,6 +20,6 @@ ClimbingPlace.destroy_all
     address: Faker::Address.full_address,
     description: Faker::Lorem.paragraphs(number: 10).join(''),
     latitude: latitude,
-    longitude: longitude  
+    longitude: longitude
   ).save(validate: false)
 end

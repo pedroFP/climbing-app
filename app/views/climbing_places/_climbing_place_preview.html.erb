@@ -16,17 +16,10 @@
     </p>
 
     <div class="d-flex justify-content-end">
-      <%= link_to climbing_place, class: "btn btn-sm btn-light" do %>
+      <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark" do %>
         Show this climbing place
         &nbsp;
-        <i class="bi bi-eye"></i>
-      <% end %>
-
-      <% if climbing_place.link.present? %>
-        <%= link_to climbing_place.link, class: "btn btn-outline-dark btn-sm", target: "_blank" do %>
-          <span> Go to website </span>
-          <i class="bi bi-arrow-up-right-square-fill"></i>
-        <% end %>
+        <i class="bi bi-arrow-up-right-circle"></i>
       <% end %>
     </div>
   </div>

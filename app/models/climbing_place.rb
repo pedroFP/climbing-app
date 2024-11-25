@@ -3,6 +3,10 @@ class ClimbingPlace < ApplicationRecord
 
   has_rich_text :description
 
+  has_many_attached :images do |attachable|
+    attachable.variant :thumb, resize_to_limit: [ 100, 100 ]
+  end
+
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 

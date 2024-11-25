@@ -14,8 +14,7 @@
         data-controller="map" 
         data-map-latitude-value="<%= @climbing_place.latitude %>" 
         data-map-longitude-value="<%= @climbing_place.longitude %>"
-        data-map-thumbnail-value="<%= url_for @climbing_place.images.first %>"
-        data-map-name-value="<%= url_for @climbing_place.name %>"
+        data-map-name-value="<%= @climbing_place.name %>"
         data-map-address-value="<%= url_for @climbing_place.address %>"
         data-map-link-value="<%= google_maps_url(@climbing_place.latitude, @climbing_place.longitude) %>"
         >

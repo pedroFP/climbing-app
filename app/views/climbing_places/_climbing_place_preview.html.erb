@@ -1,5 +1,5 @@
 <div class="card mb-3 shadow-sm" id="<%= dom_id climbing_place %>">
-  <div class="card-body">
+  <div class="card-body text-hold-yellow">
     <h5 class="card-title d-flex justify-content-between align-items-center">
       <strong class="text-capitalize"><%= climbing_place.name %></strong>
       <span>
@@ -14,7 +14,6 @@
     <p class="card-text" >
       <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
     </p>
-
     <div class="d-flex justify-content-end">
       <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark" do %>
         Show this climbing place

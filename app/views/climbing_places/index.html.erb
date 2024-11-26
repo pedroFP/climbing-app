@@ -1,13 +1,31 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Climbing places" %>
-
 <h1>Climbing places</h1>
-
+<%= form_with url: climbing_places_path, method: :get, class: "row g-3 mb-3" do |form| %>
+  <div class="col-auto">
+    <%= form.text_field :search, value: params[:search], placeholder: "Search by location", class: "form-control form-control-sm"  %>
+    <span class="form-text">Searches in a radio of 50 Km</span>
+  </div>
+  <div class="col-auto">
+    <%= form.select :country, countries_names_for_select, { include_blank: "Select a country" }, class: "form-select-sm form-select" %>
+  </div>
+  <div class="col-auto">
+    <%= button_tag type: "submit", class: "btn btn-sm btn-dark mb-3" do %>
+      Search
+      &nbsp;
+      <i class="bi bi-search"></i>
+    <% end %>
+  </div>
+<% end %>
 <div id="climbing_places">
   <% @climbing_places.each do |climbing_place| %>
-    <%= render 'climbing_places/climbing_place_preview', climbing_place: climbing_place %>
+    <%= render "climbing_places/climbing_place_preview", climbing_place: climbing_place %>
+  <% end %>
+  <% if @climbing_places.empty? %>
+    <div class="text-center p-3 mb-5">
+      <p class="fs-5 fw-light">No climbing places found!</p>
+      <p class="fs-5 fw-light">¯\_(ツ)_/¯</p>
+    </div>
   <% end %>
 </div>
-
 <%= link_to "New climbing place", new_climbing_place_path %>

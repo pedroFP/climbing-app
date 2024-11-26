@@ -4,6 +4,10 @@ class ClimbingPlacesController < ApplicationController
   # GET /climbing_places or /climbing_places.json
   def index
     @climbing_places = ClimbingPlace.all
+
+    @climbing_places = @climbing_places.search_by_country(params[:country]) if params[:country].present?
+
+    @climbing_places = @climbing_places.near(params[:search], 50, units: :km) if params[:search].present?
   end
 
   # GET /climbing_places/1 or /climbing_places/1.json

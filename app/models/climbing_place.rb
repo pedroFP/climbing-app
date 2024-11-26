@@ -20,6 +20,8 @@ class ClimbingPlace < ApplicationRecord
   after_validation :reverse_geocode
   after_validation :set_country,
                    if: ->(obj) { obj.latitude.present? && obj.longitude.present? }
+
+  scope :search_by_country, ->(country) {where(country: country.titleize) }
   private
     def set_country
       result = Geocoder.search([ latitude, longitude ]).first

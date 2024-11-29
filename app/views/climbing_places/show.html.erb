@@ -18,7 +18,7 @@
         >
       </div>
     </div>
-    <div id="gallery" class="row g-3">
+    <div id="gallery" class="row g-3" data-controller="gallery" data-gallery-target="gallery">
       <% @climbing_place.images.each do |image| %>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="attachment">

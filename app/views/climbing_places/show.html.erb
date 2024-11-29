@@ -18,9 +18,9 @@
         >
       </div>
     </div>
-    <div id="gallery" class="row g-3"> <!-- Use Bootstrap's grid row with spacing -->
+    <div id="gallery" class="row g-3">
       <% @climbing_place.images.each do |image| %>
-        <div class="col-6 col-md-4 col-lg-3"> <!-- Adjust the column size for different screen sizes -->
+        <div class="col-6 col-md-4 col-lg-3">
           <div class="attachment">
             <%= image_tag image, class: "img-fluid img-thumbnail rounded", alt: "Image" %>
           </div>

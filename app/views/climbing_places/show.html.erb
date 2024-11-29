@@ -1,11 +1,9 @@
-
 <div class="row">
   <div class="col-lg-6 col-sm-12">
     <div class="d-flex justify-content-between align-items-center my-4">
       <%= render @climbing_place %>
     </div>
   </div>
-
   <div class="col-lg-6 col-sm-12">
     <div class="d-flex justify-content-between align-items-center my-4">
       <div 
@@ -20,14 +18,14 @@
         >
       </div>
     </div>
-
-    <div class="d-flex justify-content-start">
+    <div id="gallery" class="row g-3"> <!-- Use Bootstrap's grid row with spacing -->
       <% @climbing_place.images.each do |image| %>
-        <div class="attachment m-2">
-          <%= image_tag image, class: "img-thumbnail", alt: "Image" %>
+        <div class="col-6 col-md-4 col-lg-3"> <!-- Adjust the column size for different screen sizes -->
+          <div class="attachment">
+            <%= image_tag image, class: "img-fluid img-thumbnail rounded", alt: "Image" %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-

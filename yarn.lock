@@ -730,6 +730,11 @@ update-browserslist-db@^1.1.1:
     escalade "^3.2.0"
     picocolors "^1.1.0"
 
+viewerjs@^1.11.7:
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/viewerjs/-/viewerjs-1.11.7.tgz#99c39b86c3f1b6debf446747a1f0e25f8be4db74"
+  integrity sha512-0JuVqOmL5v1jmEAlG5EBDR3XquxY8DWFQbFMprOXgaBB0F7Q/X9xWdEaQc59D8xzwkdUgXEMSSknTpriq95igg==
+
 wrap-ansi@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"

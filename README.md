@@ -1,24 +1,36 @@
-# README
+# Climbing App
+A small application to find climbing places, such as boulders, gyms, routes, etc.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup Instructions
 
-Things you may want to cover:
+### Prerequisites
+- Ruby 3.2+
+- Rails 8
+- PostgreSQL
+- Bundler
 
-* Ruby version
+### Getting Started
 
-* System dependencies
+1. Clone the repository:
+```bash
+git clone https://github.com/pedroFP/climbing-app
+cd <project-directory>
+```
 
-* Configuration
+2. Install dependencies:
+```bash
+bundle install
+```
 
-* Database creation
+3. Set up the database:
+```bash
+rails db:setup
+```
 
-* Database initialization
+4. Configure environment variables
+Generate the credentials with the command
+```bash
+VISUAL="code --wait" bin/rails credentials:edit
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Add the cariable `google_api_key` from your google dev account

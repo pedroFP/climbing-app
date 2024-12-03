@@ -70,3 +70,5 @@ gem "devise", "~> 4.9"
 gem "geocoder"
 
 gem "countries", "~> 7.0"
+
+gem "pagy"

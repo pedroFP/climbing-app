@@ -14,7 +14,7 @@ A small application to find climbing places, such as boulders, gyms, routes, etc
 1. Clone the repository:
 ```bash
 git clone https://github.com/pedroFP/climbing-app
-cd <project-directory>
+cd climbing-app
 ```
 
 2. Install dependencies:

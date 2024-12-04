@@ -1,39 +1,62 @@
 <div class="card mb-3 shadow-sm" id="<%= dom_id climbing_place %>">
-  <div class="card-body text-hold-yellow">
-    <h5 class="card-title d-flex justify-content-between align-items-center">
-      <strong class="text-capitalize">
-        <%= climbing_place.name %>
-        &nbsp;
-        <%= country_flag(climbing_place.country_code) %>
-      </strong>
-      <% if policy(climbing_place).edit?%>
-        <span>
-          <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
-            <i class="bi bi-pencil"></i>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <div id="<%= "carousel-#{dom_id(climbing_place)}" %>" class="carousel slide" data-bs-ride="carousel" style=" height: 286px; overflow: hidden;">
+        <div class="carousel-inner">
+          <% climbing_place.images.take(4).each.with_index do |image, index| %>
+            <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+              <%= image_tag image, class: "img-fluid rounded-start", style: "object-fit: cover; width: 100%; height: auto;", alt: "Image" %>
+            </div>
           <% end %>
-        </span>
-      <% end %>
-    </h5>
-    <p class="card-text text-muted mb-2">
-      <i class="bi text-danger bi-geo-alt-fill"></i>
-      <%= climbing_place.address %>
-    </p>
-    <p class="card-text">
-      <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
-    </p>
-    <div id="gallery" class="d-flex" data-controller="gallery" data-gallery-target="gallery">
-      <% climbing_place.images.take(4).each do |image| %>
-        <div class="attachment me-3">
-          <%= image_tag image.variant(:thumb), class: "img-fluid img-thumbnail rounded", alt: "Image" %>
+          <% if climbing_place.images.empty? %>
+            <div class="carousel-item active" style= "object-fit: cover; width: 100%; height: auto;">
+              <%= image_tag "not_found.jpg", class: "img-fluid rounded-start", style: "object-fit: cover; width: 100%; height: auto;", alt: "Image" %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+        <button class="carousel-control-prev" type="button" data-bs-target="#<%= "carousel-#{dom_id(climbing_place)}" %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#<%= "carousel-#{dom_id(climbing_place)}" %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
-    <div class="d-flex justify-content-end">
-      <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark" do %>
-        Show this climbing place
-        &nbsp;
-        <i class="bi bi-arrow-up-right-circle"></i>
-      <% end %>
+    <div class="col-md-8">
+      <div class="card-body text-hold-yellow">
+        <h5 class="card-title d-flex justify-content-between align-items-center">
+          <strong class="text-capitalize">
+            <%= climbing_place.name %>
+            &nbsp;
+            <%= country_flag(climbing_place.country_code) %>
+          </strong>
+          <% if policy(climbing_place).edit?%>
+            <span>
+              <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
+                <i class="bi bi-pencil"></i>
+              <% end %>
+            </span>
+          <% end %>
+        </h5>
+        <p class="card-text text-muted mb-2">
+          <i class="bi text-danger bi-geo-alt-fill"></i>
+          <%= climbing_place.address %>
+        </p>
+        <div class="card-text" style="flex: 1;">
+          <p>
+            <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end">
+          <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark" do %>
+            Show this climbing place
+            &nbsp;
+            <i class="bi bi-arrow-up-right-circle"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

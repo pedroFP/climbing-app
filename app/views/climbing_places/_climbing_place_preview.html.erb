@@ -4,11 +4,13 @@
       <strong class="text-capitalize">
         <%= climbing_place.name %>
       </strong>
-      <span>
-        <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
-          <i class="bi bi-pencil"></i>
-        <% end %>
-      </span>
+      <% if policy(climbing_place).edit?%>
+        <span>
+          <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+        </span>
+      <% end %>
     </h5>
     <p class="card-text text-muted mb-2">
       <i class="bi text-danger bi-geo-alt-fill"></i>

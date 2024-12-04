@@ -1,6 +1,7 @@
 class ClimbingPlacesController < ApplicationController
   include Pagy::Backend
 
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_climbing_place, only: %i[ show edit update destroy ]
 
   # GET /climbing_places or /climbing_places.json
@@ -21,15 +22,18 @@ class ClimbingPlacesController < ApplicationController
   # GET /climbing_places/new
   def new
     @climbing_place = ClimbingPlace.new
+    authorize @climbing_place
   end
 
   # GET /climbing_places/1/edit
   def edit
+    authorize @climbing_place
   end
 
   # POST /climbing_places or /climbing_places.json
   def create
     @climbing_place = ClimbingPlace.new(climbing_place_params)
+    authorize @climbing_place
     respond_to do |format|
       if @climbing_place.save
         format.html { redirect_to @climbing_place, notice: "Climbing place was successfully created." }
@@ -43,6 +47,7 @@ class ClimbingPlacesController < ApplicationController
 
   # PATCH/PUT /climbing_places/1 or /climbing_places/1.json
   def update
+    authorize @climbing_place
     respond_to do |format|
       if @climbing_place.update(climbing_place_params)
         format.html { redirect_to @climbing_place, notice: "Climbing place was successfully updated." }
@@ -56,6 +61,7 @@ class ClimbingPlacesController < ApplicationController
 
   # DELETE /climbing_places/1 or /climbing_places/1.json
   def destroy
+    authorize @climbing_place
     @climbing_place.destroy!
 
     respond_to do |format|

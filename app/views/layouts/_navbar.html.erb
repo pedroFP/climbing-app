@@ -12,7 +12,15 @@
         <li class="nav-item">
           <%= link_to "Home", home_path, class: "nav-link" %>
         </li>
-
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to new_climbing_place_path, class: "nav-link" do %>
+              <span>
+                Add new place
+              </span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown ">
@@ -31,7 +39,6 @@
               <li>
                 <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
               </li>
-
             <% end %>
           </ul>
         </li>

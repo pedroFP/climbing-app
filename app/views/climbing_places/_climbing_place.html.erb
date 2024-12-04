@@ -1,7 +1,11 @@
 <div class="card mb-3 shadow-sm" id="<%= dom_id climbing_place %>">
   <div class="card-body overflow-auto" style="max-height: 75vh;">
     <h5 class="card-title d-flex justify-content-between align-items-center">
-      <strong class="text-capitalize"><%= climbing_place.name %></strong>
+      <strong class="text-capitalize">
+        <%= climbing_place.name %>
+        &nbsp;
+        <%= country_flag(climbing_place.country_code) %>
+      </strong>
       <% if policy(climbing_place).edit?%>
         <span>
           <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>

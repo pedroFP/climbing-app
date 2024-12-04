@@ -3,6 +3,8 @@
     <h5 class="card-title d-flex justify-content-between align-items-center">
       <strong class="text-capitalize">
         <%= climbing_place.name %>
+        &nbsp;
+        <%= country_flag(climbing_place.country_code) %>
       </strong>
       <% if policy(climbing_place).edit?%>
         <span>

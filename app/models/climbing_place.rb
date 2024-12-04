@@ -24,9 +24,13 @@ class ClimbingPlace < ApplicationRecord
                    if: ->(obj) { obj.latitude.present? && obj.longitude.present? }
 
   scope :search_by_country, ->(country) { where(country: country.titleize) }
+
   private
     def set_country
       result = Geocoder.search([ latitude, longitude ]).first
-      self.country = result.country if result
+      return unless result
+
+      self.country = result.country
+      self.country_code = result.country_code
     end
 end

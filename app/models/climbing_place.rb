@@ -1,6 +1,8 @@
 class ClimbingPlace < ApplicationRecord
   VALID_URL_REGEX = /\A(http|https):\/\/[^\s]+\z/i
 
+  belongs_to :user
+
   has_rich_text :description
 
   has_many_attached :images do |attachable|

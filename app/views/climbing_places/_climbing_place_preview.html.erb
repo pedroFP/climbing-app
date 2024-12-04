@@ -1,7 +1,9 @@
 <div class="card mb-3 shadow-sm" id="<%= dom_id climbing_place %>">
   <div class="card-body text-hold-yellow">
     <h5 class="card-title d-flex justify-content-between align-items-center">
-      <strong class="text-capitalize"><%= climbing_place.name %></strong>
+      <strong class="text-capitalize">
+        <%= climbing_place.name %>
+      </strong>
       <span>
         <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
           <i class="bi bi-pencil"></i>
@@ -9,11 +11,19 @@
       </span>
     </h5>
     <p class="card-text text-muted mb-2">
-      <i class="bi text-danger bi-geo-alt-fill"></i> <%= climbing_place.address %>
+      <i class="bi text-danger bi-geo-alt-fill"></i>
+      <%= climbing_place.address %>
     </p>
-    <p class="card-text" >
+    <p class="card-text">
       <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
     </p>
+    <div id="gallery" class="d-flex" data-controller="gallery" data-gallery-target="gallery">
+      <% climbing_place.images.take(4).each do |image| %>
+        <div class="attachment me-3">
+          <%= image_tag image.variant(:thumb), class: "img-fluid img-thumbnail rounded", alt: "Image" %>
+        </div>
+      <% end %>
+    </div>
     <div class="d-flex justify-content-end">
       <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark" do %>
         Show this climbing place

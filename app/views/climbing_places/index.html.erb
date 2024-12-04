@@ -1,14 +1,14 @@
 <% content_for :title, "Climbing places" %>
 <h1>Climbing places</h1>
-<%= form_with url: climbing_places_path, method: :get, class: "row g-3 mb-3" do |form| %>
-  <div class="col-auto">
+<%= form_with url: climbing_places_path, method: :get, class: "row g-3 my-3" do |form| %>
+  <div class="col-md-auto col-sm-12">
     <%= form.text_field :search, value: params[:search], placeholder: "Search by location", class: "form-control form-control-sm"  %>
     <span class="form-text">Searches in a radio of 50 Km</span>
   </div>
-  <div class="col-auto">
+  <div class="col-md-auto col-sm-12">
     <%= form.select :country, countries_names_for_select, { include_blank: "Select a country" }, class: "form-select-sm form-select" %>
   </div>
-  <div class="col-auto">
+  <div class="col-md-auto col-sm-12">
     <%= button_tag type: "submit", class: "btn btn-sm btn-dark mb-3" do %>
       Search
       &nbsp;

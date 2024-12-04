@@ -33,7 +33,10 @@ class ClimbingPlacesController < ApplicationController
   # POST /climbing_places or /climbing_places.json
   def create
     @climbing_place = ClimbingPlace.new(climbing_place_params)
+    @climbing_place.user = current_user
+
     authorize @climbing_place
+
     respond_to do |format|
       if @climbing_place.save
         format.html { redirect_to @climbing_place, notice: "Climbing place was successfully created." }

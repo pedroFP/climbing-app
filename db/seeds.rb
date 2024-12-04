@@ -29,7 +29,8 @@ end
     description: Faker::Lorem.paragraphs(number: 10).join(''),
     latitude: latitude,
     longitude: longitude,
-    user_id: user.id
+    user_id: user.id,
+    country_code: [ "US", "CL", "PT" ].sample,
   ).save(validate: false)
 end
 

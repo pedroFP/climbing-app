@@ -8,8 +8,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
+User.destroy_all
 ClimbingPlace.destroy_all
+
+user = User.create! do |u|
+  u.name = "user"
+  u.email = "123@123.com"
+  u.password = "123123"
+  u.password_confirmation = "123123"
+end
+
 
 10.times do
   latitude = 32.0 + rand * (38.0 - 32.0) # Random number between 37.0 and 38.0
@@ -20,6 +28,9 @@ ClimbingPlace.destroy_all
     address: Faker::Address.full_address,
     description: Faker::Lorem.paragraphs(number: 10).join(''),
     latitude: latitude,
-    longitude: longitude
+    longitude: longitude,
+    user_id: user.id
   ).save(validate: false)
 end
+
+puts "Seeds created!"

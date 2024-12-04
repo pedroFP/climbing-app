@@ -72,3 +72,4 @@ gem "geocoder"
 gem "countries", "~> 7.0"
 
 gem "pagy"
+gem "pundit", "~> 2.4"

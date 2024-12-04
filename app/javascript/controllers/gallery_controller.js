@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import "viewerjs"
+import "viewerjs";
 
 // Connects to data-controller="gallery"
 export default class extends Controller {
@@ -7,9 +7,8 @@ export default class extends Controller {
 
   connect() {
     new Viewer(this.galleryTarget, {
-      navbar: false,  // Hide the navbar
+      navbar: false, // Hide the navbar
       toolbar: false, // Hide the toolbar
-      movable: false, // Disable movable zommed images 
     });
   }
 }

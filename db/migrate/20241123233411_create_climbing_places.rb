@@ -4,6 +4,7 @@ class CreateClimbingPlaces < ActiveRecord::Migration[8.0]
       t.string :name
       t.string :address
       t.string :country
+      t.string :country_code
       t.string :link
       t.text :description
       t.float :latitude

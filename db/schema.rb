@@ -56,6 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_002032) do
     t.string "name"
     t.string "address"
     t.string "country"
+    t.string "country_code"
     t.string "link"
     t.text "description"
     t.float "latitude"

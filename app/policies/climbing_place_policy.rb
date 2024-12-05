@@ -18,5 +18,4 @@ class ClimbingPlacePolicy < ApplicationPolicy
   def destroy?
     @user.present? && @user == @record.user
   end
-
 end

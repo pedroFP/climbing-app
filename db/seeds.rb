@@ -16,6 +16,7 @@ user = User.create! do |u|
   u.email = "123@123.com"
   u.password = "123123"
   u.password_confirmation = "123123"
+  u.confirmed_at = Time.zone.now
 end
 
 

@@ -29,10 +29,10 @@
           <i class="bi bi-trash"></i>
         <% end %>
       <% else %>
-        <p class="fw-light">
+        <span class="fw-light">
           Added on
           <%= climbing_place.created_at.strftime("%d-%b-%Y") %>
-        </p>
+        </span>
       <% end %>
       <% if climbing_place.link.present? %>
         <%= link_to climbing_place.link, class: "btn btn-dark btn-sm", target: :_blank do %>

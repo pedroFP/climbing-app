@@ -1,6 +1,10 @@
-<%= render "form", climbing_place: @climbing_place %>
-<br>
-<div>
-  <%= link_to "Show this climbing place", @climbing_place %> |
-  <%= link_to "Back to climbing places", climbing_places_path %>
+<div class="card">
+  <div class="card-body">
+    <%= render "form", climbing_place: @climbing_place %>
+    <br>
+    <div>
+      <%= link_to "Show this climbing place", @climbing_place %> |
+      <%= link_to "Back to climbing places", climbing_places_path %>
+    </div>
+  </div>
 </div>

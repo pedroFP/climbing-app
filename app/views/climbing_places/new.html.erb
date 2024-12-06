@@ -1,6 +1,10 @@
-<% content_for :title, "New climbing place" %>
-<%= render "form", climbing_place: @climbing_place %>
-<br>
-<div>
-  <%= link_to "Back to climbing places", climbing_places_path %>
+<div class="card">
+  <div class="card-body">
+    <% content_for :title, "New climbing place" %>
+    <%= render "form", climbing_place: @climbing_place %>
+    <br>
+    <div>
+      <%= link_to "Back to climbing places", climbing_places_path %>
+    </div>
+  </div>
 </div>

@@ -27,7 +27,17 @@
           <ul class="dropdown-menu dropdown-menu-lg-end">
             <% if user_signed_in? %>
               <li>
-                <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "dropdown-item" %>
+                <%= link_to edit_user_registration_path, class: "dropdown-item d-flex justify-content-between" do %>
+                  Edit account
+                  <i class="bi bi-pencil"></i>
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "dropdown-item d-flex justify-content-between" do %>
+                  Log out
+                  <i class="text-danger bi bi-trash"></i>
+                <% end %>
               </li>
             <% else %>
               <li>

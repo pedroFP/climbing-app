@@ -1,16 +1,16 @@
 <div class="card mb-3 shadow-sm" id="<%= dom_id climbing_place %>">
   <div class="row g-0">
     <div class="col-md-4">
-      <div id="<%= "carousel-#{dom_id(climbing_place)}" %>" class="carousel slide" data-bs-ride="carousel" style=" height: 286px; overflow: hidden;">
-        <div class="carousel-inner">
+      <div id="<%= "carousel-#{dom_id(climbing_place)}" %>" class="carousel slide" data-bs-ride="carousel" style="height: 286px; overflow: hidden;">
+        <div class="carousel-inner" style="height: 100%; width: 100%;">
           <% climbing_place.images.take(4).each.with_index do |image, index| %>
-            <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-              <%= image_tag image, class: "img-fluid rounded-start", style: "object-fit: cover; width: 100%; height: auto;", alt: "Image" %>
+            <div class="carousel-item <%= index.zero? ? "active" : "" %>" style="height: 100%; width: 100%;">
+              <%= image_tag image, class: "d-block w-100 h-100", style: "object-fit: cover;", alt: "Image" %>
             </div>
           <% end %>
           <% if climbing_place.images.empty? %>
-            <div class="carousel-item active" style= "object-fit: cover; width: 100%; height: auto;">
-              <%= image_tag "not_found.jpg", class: "img-fluid rounded-start", style: "object-fit: cover; width: 100%; height: auto;", alt: "Image" %>
+            <div class="carousel-item active" style="height: 100%; width: 100%;">
+              <%= image_tag "not_found.jpg", class: "d-block w-100 h-100", style: "object-fit: cover;", alt: "Image" %>
             </div>
           <% end %>
         </div>
@@ -32,7 +32,7 @@
             &nbsp;
             <%= country_flag(climbing_place.country_code) %>
           </strong>
-          <% if policy(climbing_place).edit?%>
+          <% if policy(climbing_place).edit? %>
             <span>
               <%= link_to edit_climbing_place_path(climbing_place), class: "text-primary fs-6 btn-sm me-2" do %>
                 <i class="bi bi-pencil"></i>
@@ -48,6 +48,7 @@
           <p>
             <%= truncate climbing_place.description.to_plain_text, length: 1000, omission: '...' %>
           </p>
+          <br>
         </div>
         <div class="d-flex justify-content-end">
           <%= link_to climbing_place, class: "btn btn-sm btn-outline-dark position-absolute bottom-0 end-0 m-3" do %>

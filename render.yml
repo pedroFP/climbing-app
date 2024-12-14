@@ -1,0 +1,35 @@
+databases:
+  - name: climbing_app_production
+    databaseName: climbing_app_production
+    user: climbing_app
+    plan: free
+  - name: climbing_app_production_queue
+    databaseName: climbing_app_production_queue
+    user: climbing_app
+    plan: free
+  - name: climbing_app_production_cache
+    databaseName: climbing_app_production_cache
+    user: climbing_app
+    plan: free
+  - name: climbing_app_production_cable
+    databaseName: climbing_app_production_cable
+    user: climbing_app
+    plan: free
+
+services:
+  - type: web
+    name: climbing_app_production
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: climbing_app_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default

@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_04_002032) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_14_234439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "action_cable_subscriptions", force: :cascade do |t|
+    t.string "channel"
+    t.string "stream"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel", "stream"], name: "index_action_cable_subscriptions_on_channel_and_stream"
+    t.index ["user_id"], name: "index_action_cable_subscriptions_on_user_id"
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +62,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_002032) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "caches", force: :cascade do |t|
+    t.string "key", null: false
+    t.text "value", null: false
+    t.integer "expires_in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_caches_on_key", unique: true
+  end
+
   create_table "climbing_places", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -65,6 +84,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_002032) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_climbing_places_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "queue", null: false
+    t.text "job_data", null: false
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["queue"], name: "index_jobs_on_queue"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +116,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_04_002032) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "action_cable_subscriptions", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "climbing_places", "users"

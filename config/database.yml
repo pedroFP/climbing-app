@@ -86,13 +86,13 @@ production:
     password: <%= ENV["CLIMBING_APP_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    database: climbing_app_production_cache
+    database: climbing_app_production_teg0
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: climbing_app_production_queue
+    database: climbing_app_production_teg0
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: climbing_app_production_cable
+    database: climbing_app_production_teg0
     migrations_paths: db/cable_migrate

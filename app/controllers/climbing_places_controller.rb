@@ -33,6 +33,7 @@ class ClimbingPlacesController < ApplicationController
   # POST /climbing_places or /climbing_places.json
   def create
     @climbing_place = ClimbingPlace.new(climbing_place_params)
+    @climbing_place.images = params.dig(:climbing_place, :images)
     @climbing_place.user = current_user
 
     authorize @climbing_place
@@ -53,6 +54,7 @@ class ClimbingPlacesController < ApplicationController
     authorize @climbing_place
     respond_to do |format|
       if @climbing_place.update(climbing_place_params)
+        @climbing_place.images.attach(params.dig(:climbing_place, :images))
         format.html { redirect_to @climbing_place, notice: "Climbing place was successfully updated." }
         format.json { render :show, status: :ok, location: @climbing_place }
       else
@@ -81,6 +83,6 @@ class ClimbingPlacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def climbing_place_params
-      params.expect(climbing_place: [ :name, :address, :latitude, :longitude, :description, :link, images: [] ])
+      params.expect(climbing_place: [ :name, :address, :latitude, :longitude, :description, :link ])
     end
 end

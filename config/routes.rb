@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "climbing_places#index"
 
-  resources :climbing_places
+  resources :climbing_places do
+    resources :images, only: :destroy, module: :climbing_places
+  end
 
   devise_for :users, controllers: {
     sessions: "users/sessions",

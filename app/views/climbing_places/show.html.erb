@@ -23,6 +23,9 @@
         <div class="col-6 col-md-4 col-lg-3">
           <div class="attachment">
             <%= image_tag image, class: "img-fluid img-thumbnail rounded", alt: "Image" %>
+            <%= link_to climbing_place_image_path(@climbing_place, image), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "dropdown-item d-flex justify-content-between" do %>
+              <i class="text-danger bi bi-trash"></i>
+            <% end %>
           </div>
         </div>
       <% end %>

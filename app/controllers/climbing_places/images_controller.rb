@@ -3,6 +3,7 @@ class ClimbingPlaces::ImagesController < ApplicationController
   before_action :set_climbing_place
 
   def destroy
+    authorize @climbing_place, :edit?
     @climbing_place.images.find(params[:id]).purge
     redirect_to @climbing_place, notice: "Image deleted successfully."
   end

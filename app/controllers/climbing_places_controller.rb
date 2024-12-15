@@ -54,7 +54,7 @@ class ClimbingPlacesController < ApplicationController
     authorize @climbing_place
     respond_to do |format|
       if @climbing_place.update(climbing_place_params)
-        @climbing_place.images.attach(params.dig(:climbing_place, :images))
+        @climbing_place.images.attach(params.dig(:climbing_place, :images)) unless params[:climbing_place][:images].all?(&:empty?)
         format.html { redirect_to @climbing_place, notice: "Climbing place was successfully updated." }
         format.json { render :show, status: :ok, location: @climbing_place }
       else

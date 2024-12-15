@@ -22,7 +22,7 @@
       <% @climbing_place.images.each do |image| %>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="attachment">
-            <%= image_tag image, class: "img-fluid img-thumbnail rounded", alt: "Image" %>
+            <img src="<%= image.url(disposition: 'inline') %>" class= "img-fluid img-thumbnail rounded" alt= "Image" >
           </div>
         </div>
       <% end %>

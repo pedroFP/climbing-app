@@ -5,7 +5,7 @@
         <div class="carousel-inner" style="height: 100%; width: 100%;">
           <% climbing_place.images.take(4).each.with_index do |image, index| %>
             <div class="carousel-item <%= index.zero? ? "active" : "" %>" style="height: 100%; width: 100%;">
-              <%= image_tag image, class: "d-block w-100 h-100", style: "object-fit: cover;", alt: "Image" %>
+              <img src="<%= image.url(disposition: 'inline') %>" class="block w-100 h-100" style="object-fit: cover;" alt= "Image" >
             </div>
           <% end %>
           <% if climbing_place.images.empty? %>

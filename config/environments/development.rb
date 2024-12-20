@@ -72,7 +72,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: "<#{ Rails.application.credentials.smtp.default_sender }>" }
+  config.action_mailer.default_options = { from: "<#{ Rails.application.credentials.dig(:smtp, :default_sender) }>" }
 
   config.action_mailer.delivery_method = :smtp
 
@@ -80,8 +80,8 @@ Rails.application.configure do
     address:              "smtp-relay.brevo.com",
     port:                 587,
     domain:               "yourdomain.com", # Replace with your domain
-    user_name:            Rails.application.credentials.smtp.user_name,
-    password:             Rails.application.credentials.smtp.password,
+    user_name:            Rails.application.credentials.dig(:smtp, :user_name),
+    password:             Rails.application.credentials.dig(:smtp, :password),
     authentication:       :login,
     enable_starttls_auto: true
   }

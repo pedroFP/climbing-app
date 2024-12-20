@@ -92,14 +92,14 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  config.action_mailer.default_options = { from: "<#{ Rails.application.credentials.smtp.no_reply_sender }>" }
+  config.action_mailer.default_options = { from: "<#{ Rails.application.credentials.dig(:smtp, :no_reply_sender) }>" }
 
   config.action_mailer.smtp_settings = {
     address:              "smtp-relay.brevo.com",
     port:                 587,
     domain:               "climbing-app.onrender.com", # Replace with your domain
-    user_name:            Rails.application.credentials.smtp.user_name,
-    password:             Rails.application.credentials.smtp.password,
+    user_name:            Rails.application.credentials.dig(:smtp, :user_name),
+    password:             Rails.application.credentials.dig(:smtp, :password),
     authentication:       :login,
     enable_starttls_auto: true
   }

@@ -12,7 +12,7 @@ class ClimbingPlacesController < ApplicationController
 
     @climbing_places = @climbing_places.near(params[:search], 50, units: :km) if params[:search].present?
 
-    @pagy, @records = pagy(@climbing_places.order(updated_at: :desc), limit: 30)
+    @pagy, @records = pagy(@climbing_places.order(created_at: :desc), limit: 15)
   end
 
   # GET /climbing_places/1 or /climbing_places/1.json

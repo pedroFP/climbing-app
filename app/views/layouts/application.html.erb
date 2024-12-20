@@ -13,7 +13,7 @@
     <link rel="icon" href="/climbing_icon.png" type="image/png">
     <%# <link rel="icon" href="/icon.svg" type="image/svg+xml"> %>
     <link rel="apple-touch-icon" href="/icon.png">
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials[:google_api_key] %>&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google_api_key) %>&libraries=places"></script>
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>

@@ -41,7 +41,7 @@ VISUAL="code --wait" bin/rails credentials:edit
 
 Add the cariable `google_api_key` from your google dev account
 
-Currently development is using [Brevo](www.brevo.com) for the SMTP service
+Currently development is using [Brevo](www.brevo.com) for the SMTP service and Google Cloud Storage
 
 ```yml
 secret_key_base:
@@ -57,5 +57,4 @@ smtp:
 storage:
   bucket: # your `bucket`
   project: # your `project`
-
 ```

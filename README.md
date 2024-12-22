@@ -44,7 +44,18 @@ Add the cariable `google_api_key` from your google dev account
 Currently development is using [Brevo](www.brevo.com) for the SMTP service
 
 ```yml
-default_sender # Must be a verified sender
-user_name # smtp login
-password # smtp password
+secret_key_base:
+
+google_api_key:
+
+smtp:
+  default_sender: # your `default_sender`
+  no_reply_sender: # your `no_reply_sender`
+  user_name: # your `user_name`
+  password: # your `password`
+
+storage:
+  bucket: # your `bucket`
+  project: # your `project`
+
 ```

@@ -5,9 +5,15 @@ one:
   address: MyString
   latitude: 1.5
   longitude: 1.5
+  country_code: CL
+  country: Chile
+  user: one
 
 two:
   name: MyString
   address: MyString
   latitude: 1.5
   longitude: 1.5
+  country: Portugal
+  country_code: PT
+  user: two
